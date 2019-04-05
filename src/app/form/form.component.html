@@ -1,0 +1,63 @@
+<form formGroup="userForm">
+
+  <label>
+    Name:
+    <input type="text" formControlName="name" 
+    [ngClass]="{'fail': userForm.controls.name.invalid && visible}">
+  </label>
+
+  <div *ngIf="userForm.controls.name.invalid && visible">
+
+    <div *ngIf="userForm.controls.name.errors.required">
+      name is required
+    </div>
+    <div *ngIf="userForm.controls.name.errors.pattern">
+      name is invalid
+    </div>
+  </div>
+
+  <label>
+    Lastname:
+    
+    <input type="text" formControlName="lastname"  
+    [ngClass]="{'fail': userForm.controls.lastname.invalid && visible}">
+  </label>
+
+  <div *ngIf="userForm.controls.lastname.invalid && visible">
+
+    <div *ngIf="userForm.controls.lastname.errors.required">
+      lastname is required
+    </div>
+    <div *ngIf="userForm.controls.lastname.errors.pattern">
+      lastname is invalid
+    </div>
+
+  </div>
+
+  <label>
+    Mail:
+    <input type="email" formControlName="mail"  
+    [ngClass]="{'fail': userForm.controls.mail.invalid && visible}">
+  </label>
+
+  <div *ngIf="userForm.controls.mail.invalid && visible">
+
+    <div *ngIf="userForm.controls.mail.errors.required">
+      mail is required
+    </div>
+    <div *ngIf="userForm.controls.mail.errors.mail">
+      mail is invalid
+    </div>
+
+  </div>
+ 
+
+  <button (click)="onSubmit()" >
+    Submit
+  </button>
+
+  Value: {{ userForm.value | json }}
+
+  <p>Form status: {{ userForm.status }}</p>
+</form>
+
