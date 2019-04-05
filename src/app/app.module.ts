@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PhonebookModule } from './phonebook/phonebook.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormModule } from './form/form.module';
+import { HttpClientModule }    from '@angular/common/http';
+import { ApiService } from './api.service';
+import { DadComponent } from './dad/dad.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DadComponent
   ],
   imports: [
     BrowserModule,
@@ -18,9 +22,9 @@ import { FormModule } from './form/form.module';
     BrowserAnimationsModule,
     PhonebookModule,
     FormModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

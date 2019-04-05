@@ -1,4 +1,4 @@
-<form formGroup="userForm">
+<form [formGroup]="userForm">
 
   <label>
     Name:
@@ -45,14 +45,14 @@
     <div *ngIf="userForm.controls.mail.errors.required">
       mail is required
     </div>
-    <div *ngIf="userForm.controls.mail.errors.mail">
+    <div *ngIf="userForm.controls.mail.errors.email">
       mail is invalid
     </div>
 
   </div>
  
 
-  <button (click)="onSubmit()" >
+  <button (click)="onSubmit()" [disabled]="!userForm.valid" routerLink="../phonebook">
     Submit
   </button>
 

@@ -1,3 +1,24 @@
-<p>
-  phonebook working
-</p>
+<div class="phonebook">
+  <div class="users">
+    <table>
+      <div class="user" *ngFor="let user of users; index as i">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.mail }}</td>
+          <td>
+            <button id="{{ user._id }}" (click)="delUser(user._id)">
+              Del
+            </button>
+          </td>
+          <td>
+            <button id="{{ user._id }}" routerLink="../form/{{user._id}}">
+              Edit
+            </button>
+          </td>
+        </tr>
+      </div>
+    </table>
+  </div>
+</div>

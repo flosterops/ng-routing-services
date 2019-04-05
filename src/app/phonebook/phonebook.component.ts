@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService, Data } from '../api.service';
 
 @Component({
   selector: 'app-phonebook',
@@ -7,8 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhonebookComponent implements OnInit {
 
-  constructor() {}
+  constructor(private request: ApiService) {}
 
-  ngOnInit() {}
+  users = [];
+  
+  delUser(id: string) {
+    this.request.delUser(id)
+      .subscribe(
+        (response) => this.ngOnInit()
+      );
+  }
+
+  // editUser(){
+
+  // }
+
+  ngOnInit() {
+    this.request.getUsers()
+      .subscribe(
+        (data: Data) => (this.users = data.items)
+      );
+  }
+
 
 }
