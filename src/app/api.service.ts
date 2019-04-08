@@ -4,7 +4,17 @@ import { HttpClient } from '@angular/common/http';
 export interface User {
   name: string,
   lastname: string,
-  mail: string
+  mail: string,
+  _id: string
+}
+
+export interface EditUser {
+  item: {
+    name: string,
+    lastname: string,
+    mail: string
+  },
+  success: Boolean
 }
 
 export interface Data {
@@ -25,5 +35,13 @@ export class ApiService {
 
   delUser(id: string) {
     return this.http.get(this.url + '/phonebook/delete/' + id);
+  }
+
+  getUser(id: string) {
+    return this.http.get(this.url + '/phonebook/get/' + id);
+  }
+
+  updateUser(obj: User) {
+    return this.http.post(this.url + '/phonebook/update/', obj);
   }
 }

@@ -52,7 +52,7 @@
   </div>
  
 
-  <button (click)="onSubmit()" [disabled]="!userForm.valid" routerLink="../phonebook">
+  <button (click)="addUser()" [disabled]="!userForm.valid" routerLink="../phonebook">
     Submit
   </button>
 
@@ -60,4 +60,3 @@
 
   <p>Form status: {{ userForm.status }}</p>
 </form>
-

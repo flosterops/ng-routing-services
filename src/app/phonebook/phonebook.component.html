@@ -13,7 +13,7 @@
             </button>
           </td>
           <td>
-            <button id="{{ user._id }}" routerLink="../form/{{user._id}}">
+            <button id="{{ user._id }}" (click)="onEdit(user)">
               Edit
             </button>
           </td>

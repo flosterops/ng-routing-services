@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, Data } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-phonebook',
@@ -8,20 +9,20 @@ import { ApiService, Data } from '../api.service';
 })
 export class PhonebookComponent implements OnInit {
 
-  constructor(private request: ApiService) {}
+  constructor(private request: ApiService, private router: Router) {}
 
   users = [];
   
   delUser(id: string) {
     this.request.delUser(id)
       .subscribe(
-        (response) => this.ngOnInit()
+        () => this.ngOnInit()
       );
   }
 
-  // editUser(){
-
-  // }
+  onEdit(user) {
+    this.router.navigate(['/form', user._id])
+  }
 
   ngOnInit() {
     this.request.getUsers()
